@@ -1,0 +1,31 @@
+body{
+    padding: 1px;
+    margin: 3px;
+}
+td{
+    border: 1px solid rgba(0, 0, 0, .7);
+    width: 20px;
+    height: 20px;
+}
+.unvisited{
+    background-color: azure;
+}
+.src{
+    background-color: aqua;
+}
+.sink{
+    background-color: grey;
+}
+#menu{
+    position:fixed;
+    width: 11%;
+    height: 99.2%;
+    border: 1px solid rgba(0, 0, 0, .7);
+    margin-right: 2px;
+}
+#board{
+    position:fixed;
+    margin-left:1px;
+    left: 11.5%;
+    border-collapse: collapse;
+}
