@@ -43,8 +43,32 @@ Board.prototype.createBoard=function(){
     
     let board=document.getElementById("board");
     board.innerHTML=table;
-    console.log(this.nodeArray);
 };
+
+// Board.prototype.eventListeners=function (){
+//     let grid=this;
+
+//     for(let row=0;row<grid.height;row++){
+//         for(let column=0;column<grid.width;column++){
+//             let currentNodeId=`${row}-${column}`;
+//             let currentNode=grid.getNode(currentNodeId);
+//             let currentElement=document.getElementById(currentNodeId);
+//         }
+//     }
+// };
+
+
+Board.prototype.getNode=function(id){
+    let nodeId=id.split('-');
+    let i=parseInt(nodeId[0]);
+    let j=parseInt(nodeId[1]);
+    return this.nodeArray[i][j];
+}
+
+Board.prototype.BFS=function(id){
+    
+}
+
 let menu=document.getElementById("menu").clientHeight;
 let width=Math.floor((window.innerWidth-menu)/13);
 let height=Math.floor(window.innerHeight/23);

@@ -13,8 +13,14 @@ td{
 .src{
     background-color: aqua;
 }
-.sink{
+.wall{
     background-color: grey;
+}
+.path{
+    background-color: burlywood;
+}
+.sink{
+    background-color: red;
 }
 #menu{
     position:fixed;
