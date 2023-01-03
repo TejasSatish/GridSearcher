@@ -4,3 +4,4 @@ class GridNode{
         this.status=status;
     }
 }
+

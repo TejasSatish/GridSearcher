@@ -64,10 +64,51 @@ Board.prototype.getNode=function(id){
     let j=parseInt(nodeId[1]);
     return this.nodeArray[i][j];
 }
-
-Board.prototype.BFS=function(id){
-    
+//had problems with splits in getNode directions
+Board.prototype.getNodeAbove=function(id){
+    let nodeId=id.split('-');
+    let i=parseInt(nodeId[0]);
+    let j=parseInt(nodeId[1]);
+    if(i==0){
+        return null;
+    }else{
+        return this.nodeArray[i-1][j];
+    }
 }
+
+Board.prototype.getNodeBelow=function(id){
+    let nodeId=id.split('-');
+    let i=parseInt(nodeId[0]);
+    let j=parseInt(nodeId[1]);
+    if(i<this.nodeArray.length-1){
+        return this.nodeArray[i+1][j];
+    }else{//no node below
+        return null;
+    }
+}
+
+Board.prototype.getNodeToRight=function(id){
+    let nodeId=id.split('-');
+    let i=parseInt(nodeId[0]);
+    let j=parseInt(nodeId[1]);
+    if(j<this.nodeArray[0].length-1){
+        return this.nodeArray[i][j+1];
+    }else{
+        return null;
+    }
+}
+
+Board.prototype.getNodeToLeft=function(id){
+    let nodeId=id.split('-');
+    let i=parseInt(nodeId[0]);
+    let j=parseInt(nodeId[1]);
+    if(j==0){
+        return null;
+    }else{
+        return this.nodeArray[i][j-1];
+    }
+}
+
 
 let menu=document.getElementById("menu").clientHeight;
 let width=Math.floor((window.innerWidth-menu)/13);

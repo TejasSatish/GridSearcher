@@ -7,8 +7,18 @@ td{
     width: 20px;
     height: 20px;
 }
+button{
+    border:1px solid black;
+    background-color: beige;
+}
+button:hover{
+    background-color: rgba(220, 245, 223, 0.795);
+}
 .unvisited{
     background-color: azure;
+}
+.visited{
+    background-color: green;
 }
 .src{
     background-color: aqua;
