@@ -5,6 +5,7 @@ class Board{
         this.nodeArray=[];
         this.src=null;
         this.sink=null;
+        this.nodes=[];
     }
 }
 
@@ -18,7 +19,7 @@ Board.prototype.createBoard=function(){
     for(let row=0;row<this.height;row++){
         let nodeRow=[];
         let tableRow=`<tr id="row ${row}">`;
-
+        
         for(let column=0;column<this.width;column++){
             let newNodeId=`${row}-${column}`;
             let newNode,newNodeClass;
@@ -34,7 +35,7 @@ Board.prototype.createBoard=function(){
             }
             newNode=new GridNode(newNodeId,newNodeClass);
             nodeRow.push(newNode);
-            
+            this.nodes.push(newNode);
             tableRow=tableRow.concat(`<td id="${newNodeId}" class="${newNodeClass}"></td>`);
         }
         this.nodeArray.push(nodeRow);
@@ -64,50 +65,57 @@ Board.prototype.getNode=function(id){
     let j=parseInt(nodeId[1]);
     return this.nodeArray[i][j];
 }
+Board.prototype.getId=function(node){
+    let nodeId=node.id;
+    nodeId=id.split('-');
+    let i=parseInt(nodeId[0]);
+    let j=parseInt(nodeId[1]);
+    return {i,j};
+}
 //had problems with splits in getNode directions
-Board.prototype.getNodeAbove=function(id){
-    let nodeId=id.split('-');
-    let i=parseInt(nodeId[0]);
-    let j=parseInt(nodeId[1]);
-    if(i==0){
-        return null;
-    }else{
-        return this.nodeArray[i-1][j];
-    }
-}
+// Board.prototype.getNodeAbove=function(id){
+//     let nodeId=id.split('-');
+//     let i=parseInt(nodeId[0]);
+//     let j=parseInt(nodeId[1]);
+//     if(i==0){
+//         return null;
+//     }else{
+//         return this.nodeArray[i-1][j];
+//     }
+// }
 
-Board.prototype.getNodeBelow=function(id){
-    let nodeId=id.split('-');
-    let i=parseInt(nodeId[0]);
-    let j=parseInt(nodeId[1]);
-    if(i<this.nodeArray.length-1){
-        return this.nodeArray[i+1][j];
-    }else{//no node below
-        return null;
-    }
-}
+// Board.prototype.getNodeBelow=function(id){
+//     let nodeId=id.split('-');
+//     let i=parseInt(nodeId[0]);
+//     let j=parseInt(nodeId[1]);
+//     if(i<this.nodeArray.length-1){
+//         return this.nodeArray[i+1][j];
+//     }else{//no node below
+//         return null;
+//     }
+// }
 
-Board.prototype.getNodeToRight=function(id){
-    let nodeId=id.split('-');
-    let i=parseInt(nodeId[0]);
-    let j=parseInt(nodeId[1]);
-    if(j<this.nodeArray[0].length-1){
-        return this.nodeArray[i][j+1];
-    }else{
-        return null;
-    }
-}
+// Board.prototype.getNodeToRight=function(id){
+//     let nodeId=id.split('-');
+//     let i=parseInt(nodeId[0]);
+//     let j=parseInt(nodeId[1]);
+//     if(j<this.nodeArray[0].length-1){
+//         return this.nodeArray[i][j+1];
+//     }else{
+//         return null;
+//     }
+// }
 
-Board.prototype.getNodeToLeft=function(id){
-    let nodeId=id.split('-');
-    let i=parseInt(nodeId[0]);
-    let j=parseInt(nodeId[1]);
-    if(j==0){
-        return null;
-    }else{
-        return this.nodeArray[i][j-1];
-    }
-}
+// Board.prototype.getNodeToLeft=function(id){
+//     let nodeId=id.split('-');
+//     let i=parseInt(nodeId[0]);
+//     let j=parseInt(nodeId[1]);
+//     if(j==0){
+//         return null;
+//     }else{
+//         return this.nodeArray[i][j-1];
+//     }
+// }
 
 
 let menu=document.getElementById("menu").clientHeight;

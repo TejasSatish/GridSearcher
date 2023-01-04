@@ -22,8 +22,6 @@ board.addEventListener("mousemove",  //to draw walls
             if(currentNodeStatus==='unvisited'){
                 event.target.className='wall';
             }
-        }else{
-            
         }
     }
 );
@@ -52,5 +50,5 @@ board.addEventListener("contextmenu",
 
 let search=document.getElementById('Search');
 search.addEventListener("click",
-    DFS()
+    dijkstra()
 );
