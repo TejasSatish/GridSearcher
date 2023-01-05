@@ -9,13 +9,22 @@ function getAllNodes(){
     }
     return allNodes;
 }
+
+// function animateDijkstra(){
+//     let traversedPath=dijkstra();
+//     console.log(Object.keys(traversedPath));
+//     let last=traversedPath[traversedPath.length];
+//     if(last===newBoard.sink){ //last element in path is equal to sink
+        
+//     }
+// }
 async function dijkstra(){
     let start=newBoard.getNode(newBoard.src);
     let end=newBoard.getNode(newBoard.sink);
     newBoard.getNode(newBoard.src).distance=0;
     const unvisited=getAllNodes();
     while(!!unvisited.length){
-        await sleep(10); //timeout fn for clearer viz
+        await sleep(1); //timeout fn for clearer viz
         
         sortByDist(unvisited);
         const closest=unvisited.shift();
@@ -35,7 +44,14 @@ async function dijkstra(){
         closest.isVisited=true;
         path.push(closest);
         if(closest === end){
-            console.log(path);
+            let shortestPath=getShortestPath(newBoard.sink);
+            console.log(shortestPath);
+            for(let i=0;i<shortestPath.length;i++){
+            const node=shortestPath.pop();
+            let nodeId=node.id;
+            let nodeEle=document.getElementById(nodeId);
+            nodeEle.className= "path";
+        }
             return path;
         }
         updateNeighbours(closest);
@@ -62,7 +78,7 @@ function updateNeighbours(node){
 
     for(const neighbour of unvisitedNeighbours){
         neighbour.distance= node.distance+1;
-        neighbour.previousNode=node;
+        neighbour.previousNode=node; //for backtracking
     }
 }
 
@@ -85,7 +101,16 @@ function getNeighbours(node){
     }
     
     
-
-    return neighbours;
+    return neighbours.filter(neighbour=>!neighbour.isVisited);
 }
+
+function getShortestPath(end){
+    let shortestPath=[];
+    let currNode=end;
+    while(currNode!==null){
+        shortestPath.unshift(currNode); // pushes into list
+        currNode=currNode.previousNode;
+    }
+    return shortestPath;
+}   
 
