@@ -67,9 +67,9 @@ Board.prototype.getNode=function(id){
 }
 Board.prototype.getId=function(node){
     let nodeId=node.id;
-    nodeId=id.split('-');
-    let i=parseInt(nodeId[0]);
-    let j=parseInt(nodeId[1]);
+    nid=nodeId.split('-');
+    let i=parseInt(nid[0]);
+    let j=parseInt(nid[1]);
     return {i,j};
 }
 //had problems with splits in getNode directions
