@@ -48,7 +48,7 @@ board.addEventListener("contextmenu",
     },false
 );
 
-let search=document.getElementById('Search');
-search.addEventListener("click",
-    dijkstra()
-);
+// let search=document.getElementById('Search');
+// search.addEventListener("click",
+//     dijkstra()
+// );
