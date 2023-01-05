@@ -3,7 +3,7 @@ class GridNode{
         this.id=id;
         this.status=status;
         this.distance=9999;
-        this.isVisited=false
-        this.previousNode;
+        this.isVisited=false;
+        this.previousNode=null;
     }
 }
