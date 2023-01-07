@@ -44,7 +44,7 @@ async function dijkstra(){
         closest.isVisited=true;
         path.push(closest);
         if(closest === end){
-            let shortestPath=getShortestPath(newBoard.sink);
+            let shortestPath=getShortestPath(newBoard.getNode(newBoard.sink));
             console.log(shortestPath);
             for(let i=0;i<shortestPath.length;i++){
             const node=shortestPath.pop();
@@ -107,7 +107,7 @@ function getNeighbours(node){
 function getShortestPath(end){
     let shortestPath=[];
     let currNode=end;
-    while(currNode!==null){
+    while(currNode!==newBoard.getNode(newBoard.src)){
         shortestPath.unshift(currNode); // pushes into list
         currNode=currNode.previousNode;
     }
